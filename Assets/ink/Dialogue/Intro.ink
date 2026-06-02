@@ -1,49 +1,71 @@
--> knotName
+-> Intro
 
-=== knotName ===
-AAAAAAAAAAAHHHHHHH # Speaker: Mate
-Este juego es una poronga # Speaker: Roke
+=== Intro ===
 
-// SHOW_DISCORD_UI
-//SHOW_EMOJIS
+# speaker:Mate
+AAAAAAAAAAAHHHHHHH
 
-Yo ya les dije que hay que cambiar pero contini no quiere nada que no sea su droga de lolcito # Speaker: Tincho
+# speaker:Roke
+Este juego es una poronga
 
-Eieieieie # Speaker: Santi
+# speaker:Tincho
+Yo ya les dije que hay que cambiar pero Contini no quiere nada que no sea su droga de lolcito
 
-ROKEEEEEEEE # Speaker: DsSound
+# speaker:Santi
+Eieieieie
 
-miau kitty, dulcecita como un... # Speaker: DsSound
+# speaker:DsSound
+ROKEEEEEEEE
 
-Bueno entonces que jugamos chiquillos? # Speaker: Dani
+# speaker:DsSound
+miau kitty, dulcecita como un...
 
-Nose pero busquemos otra cosa # Speaker: Tincho
+# speaker:Dani
+Bueno entonces que jugamos chiquillos?
 
-Vos no me vas a decir a mi lo que tengo que hacer # Speaker: Roke
+# speaker:Tincho
+No sé pero busquemos otra cosa
 
-Usted se calla # Speaker: Dani
+# speaker:Roke
+Vos no me vas a decir a mí lo que tengo que hacer
 
-Eso Dani ponele los puntos # Speaker: Mate
+# speaker:Dani
+Usted se calla
 
-Cierren el orto y escuchen. # Speaker: Tincho
-terminamos la partida y cada uno que busque un juego # Speaker: Tincho
+# speaker:Mate
+Eso Dani, ponele los puntos
 
-y si jugamos aramcito? # Speaker: Chapatero
+# speaker:Tincho
+Cierren el orto y escuchen.
 
-No bueno antes que jugar Aram me corto las manos # Speaker: Roke
+# speaker:Tincho
+Terminamos la partida y cada uno que busque un juego
 
-Dramatico el niño # Speaker: Dani
+# speaker:Chapatero
+¿Y si jugamos aramcito?
 
-Yo consegui un juego pero de mesa # Speaker: Chapatero
+# speaker:Roke
+No bueno, antes que jugar Aram me corto las manos
 
-OPA? # Speaker: Mate
+# speaker:Dani
+Dramático el niño
 
-Che si estan pongo casa # Speaker: Santi
+# speaker:Chapatero
+Yo conseguí un juego, pero de mesa
 
-Bueno pone el agua Contini que estamos yendo # Speaker: Roke
-Mas te vale que este bueno chapatista # Speaker: Roke
+# speaker:Mate
+¿OPA?
 
-# FREEZE_SCREEN
+# speaker:Santi
+Che, si están pongo casa
+
+# speaker:Roke
+Bueno, pone el agua Contini que estamos yendo
+
+# speaker:Roke
+Más te vale que esté bueno, chapatista
+
+# event:FREEZE_SCREEN
 
 -> END
 

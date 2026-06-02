@@ -1,0 +1,211 @@
+using UnityEngine;
+using TMPro;
+using Ink.Runtime;
+using UnityEngine.SceneManagement;
+using System.Collections;
+
+public class DialogueManager : MonoBehaviour
+{
+    [Header("Ink")]
+    public TextAsset inkJSON;
+
+    [Header("UI")]
+    public TMP_Text nameText;
+    public TMP_Text dialogueText;
+    public GameObject continueIcon;
+
+    [Header("Typewriter")]
+    public float typingSpeed = 0.03f;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip typeSound;
+
+    private Story story;
+
+    private Coroutine typingCoroutine;
+
+    private bool isTyping;
+
+    private string currentLine;
+
+    private void Start()
+    {
+        story = new Story(inkJSON.text);
+
+        continueIcon.SetActive(false);
+
+        ContinueStory();
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (isTyping)
+            {
+                CompleteLine();
+            }
+            else
+            {
+                ContinueStory();
+            }
+        }
+    }
+
+    private void ContinueStory()
+    {
+        if (!story.canContinue)
+        {
+            EndDialogue();
+            return;
+        }
+
+        currentLine = story.Continue().Trim();
+
+        HandleTags();
+
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
+        typingCoroutine = StartCoroutine(TypeLine(currentLine));
+    }
+
+    private void HandleTags()
+    {
+        foreach (string tag in story.currentTags)
+        {
+            string[] splitTag = tag.Split(':');
+
+            if (splitTag.Length != 2)
+                continue;
+
+            string key = splitTag[0].Trim().ToLower();
+            string value = splitTag[1].Trim();
+
+            switch (key)
+            {
+                case "speaker":
+                    SetSpeaker(value);
+                    break;
+
+                case "event":
+                    ExecuteEvent(value);
+                    break;
+            }
+        }
+    }
+
+    private void SetSpeaker(string speakerName)
+    {
+        nameText.text = speakerName;
+
+        switch (speakerName)
+        {
+            case "Mate":
+                nameText.color = Color.yellow;
+                break;
+
+            case "Roke":
+                nameText.color = Color.red;
+                break;
+
+            case "Tincho":
+                nameText.color = Color.green;
+                break;
+
+            case "Santi":
+                nameText.color = Color.cyan;
+                break;
+
+            case "Dani":
+                nameText.color = Color.magenta;
+                break;
+
+            case "Chapatero":
+                nameText.color = new Color(1f, 0.5f, 0f);
+                break;
+
+            case "DsSound":
+                nameText.color = Color.white;
+                break;
+
+            default:
+                nameText.color = Color.white;
+                break;
+        }
+    }
+
+    private void ExecuteEvent(string eventName)
+    {
+        switch (eventName)
+        {
+            case "FREEZE_SCREEN":
+                FreezeScreen();
+                break;
+        }
+    }
+
+    private IEnumerator TypeLine(string line)
+    {
+        isTyping = true;
+
+        continueIcon.SetActive(false);
+
+        dialogueText.text = "";
+
+        foreach (char letter in line)
+        {
+            dialogueText.text += letter;
+
+            if (typeSound != null && audioSource != null)
+            {
+                if (letter != ' ')
+                {
+                    audioSource.PlayOneShot(typeSound, 0.1f);
+                }
+            }
+
+            yield return new WaitForSeconds(typingSpeed);
+        }
+
+        isTyping = false;
+
+        continueIcon.SetActive(true);
+    }
+
+    private void CompleteLine()
+    {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
+        dialogueText.text = currentLine;
+
+        isTyping = false;
+
+        continueIcon.SetActive(true);
+    }
+
+    private void FreezeScreen()
+    {
+        Debug.Log("FREEZE_SCREEN ejecutado");
+
+        // Acá después podés:
+        // - Hacer un fade a negro
+        // - Mostrar una imagen
+        // - Reproducir una animación
+        // - Lanzar una transición
+    }
+
+    private void EndDialogue()
+    {
+        Debug.Log("Diálogo terminado");
+
+        // Cambiá "Mapa1" por el nombre exacto de tu escena
+        SceneManager.LoadScene("Mapa1");
+    }
+}
