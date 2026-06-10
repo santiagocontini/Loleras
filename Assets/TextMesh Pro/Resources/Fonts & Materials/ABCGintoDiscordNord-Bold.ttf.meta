@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3f74dd131403dde46b35aa9eb2f72445
+guid: f10f361d3ed3ec146a0efaf67f850de7
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Monument Extended
+  - ABC Ginto Discord Nord
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

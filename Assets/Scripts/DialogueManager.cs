@@ -105,31 +105,31 @@ public class DialogueManager : MonoBehaviour
         switch (speakerName)
         {
             case "Mate":
-                nameText.color = Color.yellow;
+                nameText.color = Color.violet;
                 break;
 
             case "Roke":
-                nameText.color = Color.red;
+                nameText.color = Color.violet;
                 break;
 
             case "Tincho":
-                nameText.color = Color.green;
+                nameText.color = Color.violet;
                 break;
 
             case "Santi":
-                nameText.color = Color.cyan;
+                nameText.color = Color.violet;
                 break;
 
             case "Dani":
-                nameText.color = Color.magenta;
+                nameText.color = Color.violet;
                 break;
 
             case "Chapatero":
-                nameText.color = new Color(1f, 0.5f, 0f);
+                nameText.color = Color.violet;
                 break;
 
             case "DsSound":
-                nameText.color = Color.white;
+                nameText.color = Color.violet;
                 break;
 
             default:

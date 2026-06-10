@@ -50,20 +50,17 @@ No bueno, antes que jugar Aram me corto las manos
 # speaker:Dani
 Dramático el niño
 
-# speaker:Chapatero
-Yo conseguí un juego, pero de mesa
-
-# speaker:Mate
-¿OPA?
-
-# speaker:Santi
-Che, si están pongo casa
-
 # speaker:Roke
 Bueno, pone el agua Contini que estamos yendo
 
-# speaker:Roke
-Más te vale que esté bueno, chapatista
+# speaker:Mate
+¿OPA? ¿JODITA EN LO DE CONTINI?
+
+# speaker:Santi
+eieie nada de jodita
+
+# speaker:Santi
+pero si, avisen cuando tan llegando
 
 # event:FREEZE_SCREEN
 
