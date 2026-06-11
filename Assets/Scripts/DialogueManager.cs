@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System.Collections;
 
 public class DialogueManager : MonoBehaviour
@@ -21,6 +22,12 @@ public class DialogueManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip typeSound;
 
+    [Header("Fade")]
+    public Image fadeImage;
+    public float fadeDuration = 1.5f;
+
+    public bool dialogueFinished = false;
+
     private Story story;
 
     private Coroutine typingCoroutine;
@@ -34,6 +41,13 @@ public class DialogueManager : MonoBehaviour
         story = new Story(inkJSON.text);
 
         continueIcon.SetActive(false);
+
+        if (fadeImage != null)
+        {
+            Color c = fadeImage.color;
+            c.a = 0f;
+            fadeImage.color = c;
+        }
 
         ContinueStory();
     }
@@ -193,19 +207,47 @@ public class DialogueManager : MonoBehaviour
     private void FreezeScreen()
     {
         Debug.Log("FREEZE_SCREEN ejecutado");
-
-        // Acá después podés:
-        // - Hacer un fade a negro
-        // - Mostrar una imagen
-        // - Reproducir una animación
-        // - Lanzar una transición
     }
 
     private void EndDialogue()
     {
         Debug.Log("Diálogo terminado");
 
-        // Cambiá "Mapa1" por el nombre exacto de tu escena
-        SceneManager.LoadScene("Mapa1");
+        dialogueFinished = true;
+
+        StartCoroutine(FadeAndLoadScene());
+    }
+
+    private IEnumerator FadeAndLoadScene()
+    {
+        if (fadeImage == null)
+        {
+            SceneManager.LoadScene("Mapa santi");
+            yield break;
+        }
+
+        float elapsedTime = 0f;
+
+        Color color = fadeImage.color;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+
+            color.a = Mathf.Lerp(
+                0f,
+                1f,
+                elapsedTime / fadeDuration
+            );
+
+            fadeImage.color = color;
+
+            yield return null;
+        }
+
+        SceneManager.LoadScene("Mapa santi");
     }
 }
+
+
+// Interacciones Mapa santi
